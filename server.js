@@ -13,7 +13,8 @@ const PORT = process.env.PORT || 3001;
 //http://api.mediastack.com/v1/news?access_key=10396027d7341f9122e9dcfbc14078de&keywords=keywords&languages=en
 server.get("/news",handleSearch);
 server.get("/test", handleTest);
-
+// http://api.mediastack.com/v1/news?access_key=10396027d7341f9122e9dcfbc14078de&languages=en&categories=health
+server.get("/category",handleCategory);
 
 //Handler Functions
 function handleTest(req, res) {
@@ -30,7 +31,7 @@ async function handleSearch ( req, res) {
  
 }
 catch(error){
-  res.status(500).send("there is no data");
+  res.status(500).send("There is no data");
 }
   
   
@@ -39,7 +40,20 @@ catch(error){
 server.get("*", (req, res) => {
   res.status(404).send("Page not found !");
 });
+async function handleCategory(req,res){
 
+  const categories=req.query.categories;
+  const categUrl=`http://api.mediastack.com/v1/news?access_key=${process.env.API_KEY}&languages=en&categories=${categories}`;
+  try {
+    const axiosData= await axios.get(categUrl);
+    const categData= axiosData.data.data.map(item=> new News(item));
+    res.status(200).send(categData);
+  } catch (error) {
+    res.status(422).send(error.message);
+  }
+  
+
+}
 server.listen(PORT, () => console.log(`listening on ${PORT}`));
 
 class News {
