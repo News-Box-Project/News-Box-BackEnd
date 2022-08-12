@@ -1,5 +1,5 @@
 {
-  "name": "node-modules",
+  "name": "news-box-backend",
   "version": "1.0.0",
   "description": "test test",
   "main": "server.js",
@@ -19,9 +19,12 @@
   },
   "homepage": "https://github.com/News-Box-Project/News-Box-BackEnd#readme",
   "dependencies": {
+    "axios": "^0.27.2",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "mongodb": "^4.8.1",
+    "nodemon": "^2.0.19",
     "mongoose": "^6.5.2"
   }
 }

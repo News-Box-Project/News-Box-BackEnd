@@ -10,6 +10,9 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 3001;
 
+const { handleSearch } = require("./modules/keywords");
+const { handleCategory } = require("./modules/categories");
+
 // test connect
 app.get('/test', (request, response) => {
 
@@ -100,7 +103,19 @@ const news1 = newsModel({
 
 // news1.save();
 
+//End points
+//http://api.mediastack.com/v1/news?access_key=10396027d7341f9122e9dcfbc14078de&keywords=keywords&languages=en
+server.get("/news", handleSearch);
+server.get("/test", handleTest);
+// http://api.mediastack.com/v1/news?access_key=10396027d7341f9122e9dcfbc14078de&languages=en&categories=health
+server.get("/category", handleCategory);
+server.get("*", (req, res) => {
+  res.status(404).send("Page not found !");
+});
 
-
+//Handler Functions
+function handleTest(req, res) {
+  res.send("Test Test");
+}
 
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
