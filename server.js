@@ -1,6 +1,5 @@
 'use strict';
 require('dotenv').config();
-require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -105,11 +104,11 @@ const news1 = newsModel({
 
 //End points
 //http://api.mediastack.com/v1/news?access_key=10396027d7341f9122e9dcfbc14078de&keywords=keywords&languages=en
-server.get("/news", handleSearch);
-server.get("/test", handleTest);
+app.get("/apinews", handleSearch);
+app.get("/test1", handleTest);
 // http://api.mediastack.com/v1/news?access_key=10396027d7341f9122e9dcfbc14078de&languages=en&categories=health
-server.get("/category", handleCategory);
-server.get("*", (req, res) => {
+app.get("/category", handleCategory);
+app.get("*", (req, res) => {
   res.status(404).send("Page not found !");
 });
 
