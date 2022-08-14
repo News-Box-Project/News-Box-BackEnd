@@ -5,7 +5,7 @@ const keywordCache={};
 
 async function handleSearch(req, res) {
   const keywords = req.query.keywords;
-  const newsUrl = `http://api.mediastack.com/v1/news?access_key=${process.env.API_KEY}&keywords=${keywords}&languages=en`;
+  const newsUrl = `http://api.mediastack.com/v1/news?access_key=${process.env.API_KEY}&keywords=${keywords}&languages=en&limit=100`;
  
   if(keywordCache[keywords] !== undefined){
      res.status(200).send(keywordCache[keywords]);

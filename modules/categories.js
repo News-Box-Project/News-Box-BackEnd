@@ -5,7 +5,7 @@ const categCache={};
 
 async function handleCategory(req, res) {
   const categories = req.query.categories;
-  const categUrl = `http://api.mediastack.com/v1/news?access_key=${process.env.API_KEY}&languages=en&categories=${categories}`;
+  const categUrl = `http://api.mediastack.com/v1/news?access_key=${process.env.API_KEY}&languages=en&categories=${categories}&limit=100`;
 
   if (categCache[categories] !== undefined){
     res.status(200).send(categCache[categories]);

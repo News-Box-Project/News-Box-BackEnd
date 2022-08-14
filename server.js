@@ -106,7 +106,7 @@ const news1 = newsModel({
 //http://api.mediastack.com/v1/news?access_key=10396027d7341f9122e9dcfbc14078de&keywords=keywords&languages=en
 app.get("/apinews", handleSearch);
 app.get("/test1", handleTest);
-// http://api.mediastack.com/v1/news?access_key=10396027d7341f9122e9dcfbc14078de&languages=en&categories=health
+//http://api.mediastack.com/v1/news?access_key=10396027d7341f9122e9dcfbc14078de&languages=en&keywords=gaza&limit=100
 app.get("/category", handleCategory);
 app.get("*", (req, res) => {
   res.status(404).send("Page not found !");
