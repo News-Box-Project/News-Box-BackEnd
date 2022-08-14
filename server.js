@@ -77,7 +77,7 @@ mongoose.connect('mongodb+srv://qais-alsgher:qais123@cluster0.evdbsxk.mongodb.ne
 
 const newsSchema = new mongoose.Schema({
 
-    auther: String,
+    author: String,
     title: String,
     description: String,
     url: String,
@@ -91,7 +91,7 @@ const newsModel = mongoose.model('newModel', newsSchema);
 
 
 const news1 = newsModel({
-    auther: "qais alsgher",
+    author: "qais alsgher",
     title: "qais alsgher",
     description: "qais alsgher",
     url: "qais alsgher",
@@ -109,12 +109,12 @@ app.get("/test1", handleTest);
 //http://api.mediastack.com/v1/news?access_key=10396027d7341f9122e9dcfbc14078de&languages=en&keywords=gaza&limit=100
 app.get("/category", handleCategory);
 app.get("*", (req, res) => {
-  res.status(404).send("Page not found !");
+    res.status(404).send("Page not found !");
 });
 
 //Handler Functions
 function handleTest(req, res) {
-  res.send("Test Test");
+    res.send("Test Test");
 }
 
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
