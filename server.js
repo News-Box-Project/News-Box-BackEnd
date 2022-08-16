@@ -21,6 +21,7 @@ app.get('/test', (request, response) => {
 
 // CRUD method
 app.get('/news', readNews);
+app.get('/news/:_id', readMore);
 app.post('/news', addNews);
 app.delete('/news/:_id', deleteNews);
 app.put('/news/:_id', updatNews);
@@ -28,12 +29,23 @@ app.put('/news/:_id', updatNews);
 
 // read data from database by get method
 function readNews(req, res) {
-
     newsModel.find({}, (error, data) => {
         if (error) console.log(`read from database have error:${error}`)
         else res.send(data);
     })
 }
+
+// return data for id news
+function readMore(req, res) {
+
+    const newsId = req.params._id;
+
+    newsModel.find({ "_id": newsId }, (error, data) => {
+        if (error) console.log(`read from database have error:${error}`)
+        else res.send(data);
+    })
+}
+
 
 // add new news by post method 
 
